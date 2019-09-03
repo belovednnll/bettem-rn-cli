@@ -1,0 +1,14 @@
+{
+  "name": "BettemRN",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "devBundleConfig": {}
+}
