@@ -15,7 +15,7 @@ class Aboutus extends Component {
 
   render() {
     return (
-      <View style={styles.container2}>
+      <View style={styles.container_graybg_wh_flexstart_flexstart}>
         <View
           style={{
             width,

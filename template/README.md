@@ -1,3 +1,18 @@
+### 运行项目
+安装所有依赖
+```bash
+cd yourProjectName
+
+yarn # 或者 npm install
+```
+执行项目依赖优化
+```bash
+npm run optimize
+```
+运行项目
+```
+react-native run-ios # or react-native run-android
+```
 ### 目录结构
 创建完成后目录中将会出现以下结构：
 

@@ -92,59 +92,6 @@ export const AppModel = {
       yield put(createAction('updateState')({ loginBtnEnable: payload }))
     },
 
-    *signIn({ payload }, { put, call }) {
-      yield put(createAction('updateState')({ viewStaus: 'signIning' }))
-      const date = new Date()
-      const dateStr =
-        date.getFullYear + '-' + (date.getMonth + 1) + '-' + date.getDate()
-      const signinDate = yield call(Storage.get, 'signinDate', dateStr)
-      const signinDateStatus = yield call(Storage.get, `${signinDate}`, false) // 默认false，未签到
-      if (signinDateStatus) Storage.remove(signinDate)
-      const resp = yield call(
-        API.baseRequest,
-        'mobileControllerv2.do?signin',
-        payload
-      )
-      if (resp && resp.status === '1') {
-        Toast.success('签到成功', 2)
-        Storage.set('signinDate', dateStr)
-        Storage.set(`${dateStr}`, true)
-        yield put(createAction('updateState')({ viewStaus: 'signInComplete' }))
-      } else {
-        Toast.fail('签到失败', 2)
-        yield put(
-          createAction('updateState')({ viewStaus: 'signInUnComplete' })
-        )
-      }
-    },
-
-    *getSigninList({ payload }, { put, call }) {
-      yield put(createAction('updateState')({ fetching: true }))
-
-      const params = {
-        signinType: 'a',
-        begin: 1,
-      }
-      const resp = yield call(
-        API.baseRequest,
-        'mobileControllerv2.do?signinListByPage',
-        { ...params, ...payload }
-      )
-      const signinList = {}
-      if (resp && resp.status === '1') {
-        resp.values.forEach(element => {
-          // DateFormat.shortDateFormat(element.singDate,DateFormat)
-          const newDate = element.singDate.split(' ')[0]
-          signinList[newDate] = {
-            startingDay: true,
-            color: colors.primary,
-            endingDay: true,
-          }
-        })
-      }
-      yield put(createAction('updateState')({ fetching: false, signinList }))
-    },
-
     *checkUpdate(action, { put, call }) {
       yield put(createAction('updateState')({ viewStaus: 'getVersion' }))
       const resp = yield call(
