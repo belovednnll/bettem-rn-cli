@@ -1,6 +1,6 @@
 {
 	"name": "bettem-rn-cli",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "",
 	"main": "./cli.js",
 	"directories": {
@@ -22,13 +22,13 @@
 	},
 	"repository": {
 	  "type": "git",
-	  "url": "git+https://github.com/LLLLLamHo/zzc-react-native-cli.git"
+	  "url": "git+https://github.com/belovednnll/bettem-rn-cli.git"
 	},
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-	  "url": "https://github.com/LLLLLamHo/zzc-react-native-cli/issues"
+	  "url": "https://github.com//belovednnll/bettem-rn-cli/issues"
 	},
-	"homepage": "https://github.com/LLLLLamHo/zzc-react-native-cli#readme"
+	"homepage": "https://github.com//belovednnll/bettem-rn-cli#readme"
   }
   

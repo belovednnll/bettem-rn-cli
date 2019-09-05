@@ -1,18 +1,13 @@
-### 运行项目
+### 初始化项目
 安装所有依赖
 ```bash
-cd yourProjectName
-
 yarn # 或者 npm install
 ```
 执行项目依赖优化
 ```bash
 npm run optimize
 ```
-运行项目
-```
-react-native run-ios # or react-native run-android
-```
+
 ### 目录结构
 创建完成后目录中将会出现以下结构：
 
@@ -36,19 +31,36 @@ react-native run-ios # or react-native run-android
 ├── package.json
 ├── README.md
 ```
-如果要运行Android工程，须修改几处才能正常使用
-1. 修改android/local.properties 中sdk.dir，改为你电脑上的androidSDK路径
 
-2. 修改android\app\build.gradle 中的 126行~ 129行
-   ```
+###运行项目
++ 如果要运行Android工程，须修改几处才能正常使用
+  1. 修改android/local.properties 中sdk.dir，改为你电脑上的androidSDK路径
+
+  2. 修改android\app\build.gradle 中的 126行~ 129行
+    ```
     storeFile file("D:\\androidSpace\\bettem.jks")
     storePassword "bettem"
     keyAlias "bettem"
     keyPassword "bettem"
-   ```
-   改为你的签名
-   如果不想麻烦，可注释掉 142~146行，使用默认的签名
+    ```
+    改为你的签名
+    如果不想麻烦，可注释掉 142~146行，使用默认的签名
 
++ 如果要运行iOS工程，须确保几个文件放到了 .rncache ，具体操作查看  https://blog.csdn.net/SummerCloudXT/article/details/80795465
+  
+    然后执行
+    ```bash
+    cd node_modules/react-native && ./scripts/ios-install-third-party.sh && cd ../../
+    ```
+
+    有可能接下来你会遇到 React Native 'config.h' file not found
+    ```bash
+    cd node_modules/react-native/third-party/glog-0.3.4 && ../../scripts/ios-configure-glog.sh && cd ../../../../
+    ```
++ 最后运行
+    ```
+    react-native run-ios # or react-native run-android
+    ```
 ### 项目常用的功能组件及版本号
 
 ```bash

@@ -20,6 +20,7 @@ import { colors } from './utils/colors'
 import ContactUs from './containers/mywork/ContactUs'
 import Aboutus from './containers/mywork/Aboutus'
 import {isIphoneX,iphoneXBaseHeight } from './utils/resolution';
+import ImageShow from './containers/common/ImageShow';
 
 const HomeNavigator = createBottomTabNavigator(
   {
@@ -107,6 +108,9 @@ const AppNavigator = createStackNavigator(
     Aboutus: {
       screen: Aboutus,
     },
+    ImageShow:{
+      screen: ImageShow
+    }
   },
   {
     headerMode: 'float',

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { View, Platform, Text, Dimensions } from 'react-native'
-import ImageZoomViewer from './ImageZoomViewer'
-import { styles, colors } from './../utils'
+import ImageZoomViewer from '../../components/ImageZoomViewer'
+import { styles, colors } from '../../utils'
 
-class ImageShow extends Component {
+export default class ImageShow extends Component {
   static navigationOptions = Platform.OS === 'ios'
     ? {
         headerTitle: '查看图片',
@@ -21,25 +21,15 @@ class ImageShow extends Component {
     : {
         header: null,
       }
-  constructor(props) {
-    super(props)
-    this.imagess = props.navigation.state.params.files
-    if (this.imagess && this.imagess.length > 0) {
-      this.imagess = this.imagess.map(item => {
-        const newItem = { ...item, url: item.url.replace('/min/', '/max/') }
-        return newItem
-      })
-    }
-    this.indexx = props.navigation.state.params.indexx
-  }
 
   render() {
+    const {imageArr,currentPos} =  this.props.navigation.state.params
     return (
-      <View style={styles.container_white_center_center}>
+      <View style={styles.container_white_wh_center_center}>
         <ImageZoomViewer
-          imageUrls={this.imagess} // 照片路径
+          imageUrls={imageArr} // 照片路径
           enableImageZoom // 是否开启手势缩放
-          index={this.indexx} // 初始显示第几张
+          index={currentPos} // 初始显示第几张
           // failImageSource={aaa} // 加载失败图片
           // onChange={(index) => {}} // 图片切换时触发
           // onPress={() => {
@@ -56,5 +46,3 @@ class ImageShow extends Component {
 }
 
 const { width, height } = Dimensions.get('window')
-
-export default ImageShow

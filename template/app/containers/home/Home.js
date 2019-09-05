@@ -48,11 +48,28 @@ export default class Home extends Component {
   render() {
     return (
       <ScrollView style={styles.scrollview}>
-        <Image
-          source={require('../../images/bettem_headimg.jpg')}
-          resizeMode="stretch"
-          style={[styles.headImage,{marginBottom:20,height:200}]}
-        />
+        <TouchableOpacity
+          onPress={()=>{
+            this.props.dispatch(
+              NavigationActions.navigate(
+                { routeName:'ImageShow',
+                  params:{
+                    currentPos:0,
+                    imageArr:[
+                      {url:'https://user-gold-cdn.xitu.io/2019/9/2/16cefb5890b4226b?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1'},
+                      {url:'https://user-gold-cdn.xitu.io/2019/9/4/16cfb84543a4b8ad?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1'}
+                    ]}
+                }
+              )
+            )
+          }
+        }>
+          <Image
+            source={require('../../images/bettem_headimg.jpg')}
+            resizeMode="stretch"
+            style={[styles.headImage,{marginBottom:20,height:200}]}
+          />
+        </TouchableOpacity>
         <Grid
           data={this.data}
           columnNum={4}
